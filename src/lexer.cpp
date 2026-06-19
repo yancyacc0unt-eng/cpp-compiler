@@ -1,1 +1,21 @@
 #include "compiler.h"
+const char *precs[] = {
+    "#include"
+};
+const char *kywds[] = {
+    "alignas", "alignof", "and", "and_eq", "atomic_cancel", "atomic_commit", "atomic_noexcept", "auto",
+    "bitand", "bitor", "bool", "break",
+    "case", "catch", "char", "char8_t", "char16_t", "char32_t", "class", "compl", "concept", "const",
+    "consteval", "constexpr", "constinit", "const_cast", "continue", "co_await", "co_return", "co_yield",
+    "decltype", "default", "delete", "do", "double", "dynamic_cast",
+    "else", "enum", "explicit", "export", "extern",
+    "false", "float", "for", "friend",
+    "goto", "if", "inline", "int", "long", "mutable",
+    
+};
+const char *opers[] = {
+    "="
+};
+const char *attrs[] = {
+    "[[]]"
+};
