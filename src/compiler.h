@@ -1,6 +1,7 @@
 #ifndef COMPILER_H
 #define COMPILER_H
 
+#include <fstream>
 #include <iostream>
 #include <string>
 //lex
@@ -33,8 +34,15 @@ struct Token {
     } as;
 };
 class Lexer {
+private:
+    Token *head;
+    Token *tail;
+    std::ifstream file;
+    long pos;
+    Token *newToken(const Token t);
+    void addToken(const Token *t);
 public:
-    Lexer(const char *filename);
+    Lexer(const char *filename):file(filename), pos(0), head(nullptr), tail(nullptr) {}
     Token *tokenize();
     ~Lexer() = default;
 };

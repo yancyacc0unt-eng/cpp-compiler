@@ -29,5 +29,14 @@ const char *opers[] = {
 };
 const char *attrs[] = {
     "[[noreturn]]", "[[fallthrough]]", "[[likely]]", "[[unlikely]]",
-    "[[TODO : finish it .]]"
+    "[[msvc::dllimport]]", "[[msvc::dllexport]]"
 };
+
+Token *Lexer::tokenize() {
+    return nullptr;
+}
+Token *Lexer::newToken(const Token t){
+    return nullptr;
+}
+void Lexer::addToken(const Token *t){
+}

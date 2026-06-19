@@ -1,7 +1,7 @@
 @echo off
 echo "================================"
 echo "Building..."
-g++ src\main.cpp -o bin\compile++.exe
+g++ src\main.cpp src\lexer.cpp -o bin\compile++.exe
 echo "Build completed."
 echo "================================"
 echo "Testing..."
