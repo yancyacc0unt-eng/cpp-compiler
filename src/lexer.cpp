@@ -1,6 +1,7 @@
 #include "compiler.h"
+#warning msg
 const char *precs[] = {
-    "#include"
+    nullptr
 };
 const char *kywds[] = {
     "alignas", "alignof", "and", "and_eq", "atomic_cancel", "atomic_commit", "atomic_noexcept", "auto",
@@ -17,7 +18,7 @@ const char *kywds[] = {
     "reflexpr", "register", "reinterpret_cast", "requires", "return",
     "short", "signed", "sizeof", "static", "static_assert", "static_cast", "struct", "switch", "synchronized",
     "template", "this", "thread_local", "throw", "true", "try", "typedef", "typeid", "typename",
-    "union", "unsigned", "using", "virtual", "void", "volatile", "wchar_t", "while", "xor", "xor_eq",
+    "union", "unsigned", "using", "virtual", "void", "volatile", "wchar_t", "while", "xor", "xor_eq"
 };
 const char *opers[] = {
     "="
