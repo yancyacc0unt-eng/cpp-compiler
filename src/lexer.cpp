@@ -1,7 +1,8 @@
 #include "compiler.h"
-#warning msg
 const char *precs[] = {
-    nullptr
+    "#include", "#line", "#error", "#pragma",
+    "#define", "undef",
+    "#if", "#ifdef", "#ifndef", "#else", "#elif", "#endif"
 };
 const char *kywds[] = {
     "alignas", "alignof", "and", "and_eq", "atomic_cancel", "atomic_commit", "atomic_noexcept", "auto",
@@ -21,8 +22,12 @@ const char *kywds[] = {
     "union", "unsigned", "using", "virtual", "void", "volatile", "wchar_t", "while", "xor", "xor_eq"
 };
 const char *opers[] = {
-    "="
+    "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=",
+    "++", "--", "+", "-", "*", "/", "%", "&", "|", "~", "^", "<<", ">>",
+    "&&", "||", "!", "==", "!=", "<=", ">=", "<", ">", "<=>", "?", ":",
+    "[", "]",/*/"*","&",/**/".", "->", ".*", "->*", "(", ")", ",", "..."
 };
 const char *attrs[] = {
-    "[[]]"
+    "[[noreturn]]", "[[fallthrough]]", "[[likely]]", "[[unlikely]]",
+    "[[TODO : finish it .]]"
 };
