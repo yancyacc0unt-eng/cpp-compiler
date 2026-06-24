@@ -30,9 +30,15 @@ const char *opers[] = {
 const char *attrs[] = {
     "[[noreturn]]", "[[fallthrough]]", "[[likely]]", "[[unlikely]]",
     "[[msvc::dllimport]]", "[[msvc::dllexport]]",
-    "[[gnu::]]", "[[gnu::]]"
+    "[[gnu::always_inline]]", "[[gnu::const]]"
 };
 
+char Lexer::peek(unsigned long ofst = 0) {
+}
+char Lexer::step(unsigned long ofst = 0) {
+}
+void Lexer::skip() {
+}
 Token *Lexer::tokenize() {
     while(this->file){
     }

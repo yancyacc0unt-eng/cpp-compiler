@@ -42,6 +42,9 @@ private:
     std::string code;
     Token *newToken(const Token t = {0});
     void addToken(Token *t);
+    char peek(unsigned long ofst = 0);
+    char step(unsigned long ofst = 0);
+    void skip();
 public:
     Lexer(const std::string &name):file(name), pos(0), head(nullptr), tail(nullptr) {}
     Lexer(const char *sorceCode):code(sorceCode), head(nullptr), tail(nullptr) {}
