@@ -30,7 +30,7 @@ struct Token {
         char *str;
         long integer;
         double floating;
-        char *args[2];
+        char *arg[2];
     } as;
 };
 class Lexer {
@@ -38,11 +38,13 @@ private:
     Token *head;
     Token *tail;
     std::ifstream file;
-    long pos;
-    Token *newToken(const Token t);
-    void addToken(const Token *t);
+    unsigned long pos;
+    std::string code;
+    Token *newToken(const Token t = {0});
+    void addToken(Token *t);
 public:
-    Lexer(const char *filename):file(filename), pos(0), head(nullptr), tail(nullptr) {}
+    Lexer(const std::string &name):file(name), pos(0), head(nullptr), tail(nullptr) {}
+    Lexer(const char *sorceCode):code(sorceCode), head(nullptr), tail(nullptr) {}
     Token *tokenize();
     ~Lexer() = default;
 };

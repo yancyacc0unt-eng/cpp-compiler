@@ -1,7 +1,7 @@
 #include "compiler.h"
 const char *precs[] = {
-    "#include", "#line", "#error", "#pragma",
     "#define", "undef",
+    "#include", "#line", "#error", "#pragma",
     "#if", "#ifdef", "#ifndef", "#else", "#elif", "#endif"
 };
 const char *kywds[] = {
@@ -29,14 +29,24 @@ const char *opers[] = {
 };
 const char *attrs[] = {
     "[[noreturn]]", "[[fallthrough]]", "[[likely]]", "[[unlikely]]",
-    "[[msvc::dllimport]]", "[[msvc::dllexport]]"
+    "[[msvc::dllimport]]", "[[msvc::dllexport]]",
+    "[[gnu::]]", "[[gnu::]]"
 };
 
 Token *Lexer::tokenize() {
+    while(this->file){
+    }
     return nullptr;
 }
-Token *Lexer::newToken(const Token t){
-    return nullptr;
+Token *Lexer::newToken(const Token t = {0}) {
+    return new Token{t};
 }
-void Lexer::addToken(const Token *t){
+void Lexer::addToken(Token *t) {
+    if(this->head == nullptr){
+        this->head = this->tail = t;
+    } else {
+        this->tail->next = t;
+        t->prev = this->tail;
+        this->tail = this->tail->next;
+    }
 }
