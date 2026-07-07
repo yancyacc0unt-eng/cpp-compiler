@@ -19,6 +19,7 @@ enum class TokenType {
     TK_LBRACE,
     TK_RBRACE,
     TK_EOF,
+    TK_ERROR
 };
 struct Token {
     Token *prev;
@@ -45,9 +46,10 @@ private:
     char peek(unsigned long ofst = 0);
     char step(unsigned long ofst = 0);
     void skip();
+    Token *scan();
 public:
-    Lexer(const std::string &name):file(name), pos(0), head(nullptr), tail(nullptr) {}
-    Lexer(const char *sorceCode):code(sorceCode), head(nullptr), tail(nullptr) {}
+    Lexer(const std::string &fileName):file(fileName), pos(0), head(nullptr), tail(nullptr) {}
+    Lexer(const char *sourceCode):code(sourceCode), head(nullptr), tail(nullptr) {}
     Token *tokenize();
     ~Lexer() = default;
 };

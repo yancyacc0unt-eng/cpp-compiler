@@ -1,4 +1,5 @@
 #include "compiler.h"
+
 const char *precs[] = {
     "#define", "undef",
     "#include", "#line", "#error", "#pragma",
@@ -33,14 +34,33 @@ const char *attrs[] = {
     "[[gnu::always_inline]]", "[[gnu::const]]"
 };
 
-char Lexer::peek(unsigned long ofst = 0) {
+char Lexer::peek(unsigned long ofst = 1) {
+    this->file.seekg(this->pos+ofst);
+    char result = this->file.get();
+    this->file.seekg(this->pos);
+    return result;
 }
-char Lexer::step(unsigned long ofst = 0) {
+char Lexer::step(unsigned long ofst = 1) {
+    this->file.seekg(this->pos+ofst);
+    char result = this->file.get();
+    this->pos += ofst;
+    return result;
 }
 void Lexer::skip() {
 }
+Token *Lexer::scan(){
+    return nullptr;
+}
 Token *Lexer::tokenize() {
-    while(this->file){
+    while(true){
+        if(this->peek() == EOF){
+            return this->head;
+        }
+        this->addToken(this->scan());
+        if(this->tail->type == TokenType::TK_ERROR){
+            std::cout << "ERROR at pos : " << this->pos << '\n'
+                      << "name : " << this->tail->name << std::endl;
+        }
     }
     return nullptr;
 }
