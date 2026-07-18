@@ -68,10 +68,12 @@ Token *Lexer::tokenize() {
         if(this->peek() == EOF){
             return this->head;
         }
+        this->skip();
         this->addToken(this->scan());
         if(this->tail->type == TokenType::TK_ERROR){
-            std::cout << "ERROR at pos : " << this->pos << '\n'
-                      << "name : " << this->tail->name << std::endl;
+            std::cout
+            << "ERROR at position : " << this->pos << '\n'
+            << "name : " << this->tail->name << std::endl;
         }
     }
     return nullptr;

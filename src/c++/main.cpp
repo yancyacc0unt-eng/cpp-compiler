@@ -1,6 +1,7 @@
 #include "compiler.h"
 
 int main(int argc, char* argv[]) {
-    std::cout << "Hello World from C++" << std::endl;
+    Lexer tokenizer(std::string("../src/c++/main.cpp"));
+    tokenizer.tokenize();
     return 0;
 }
