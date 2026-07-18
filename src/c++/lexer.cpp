@@ -47,9 +47,21 @@ char Lexer::step(unsigned long ofst = 1) {
     return result;
 }
 void Lexer::skip() {
+    if(this->peek() == '\\' && this->peek(2) == '\\') {
+        while(this->step() != '\n');
+    }
+    if(this->peek() == '\\' && this->peek(2) == '*'){
+        while(this->step() != '*' || this->peek() != '\\');
+        pos++;
+    }
+    if(this->peek() == ' ' || this->peek() == '\n'){
+        while(this->peek() != ' ' || this->peek() != '\n'){
+            this->pos++;
+        }
+    }
 }
 Token *Lexer::scan(){
-    return nullptr;
+    return this->newToken({0});
 }
 Token *Lexer::tokenize() {
     while(true){

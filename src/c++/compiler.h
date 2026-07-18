@@ -6,6 +6,7 @@
 #include <string>
 //lex
 enum class TokenType {
+    TK_ERROR,
     TK_PRE,
     TK_KEYWORD,
     TK_OP,
@@ -18,8 +19,7 @@ enum class TokenType {
     TK_SEMI,
     TK_LBRACE,
     TK_RBRACE,
-    TK_EOF,
-    TK_ERROR
+    TK_EOF
 };
 struct Token {
     Token *prev;
@@ -43,8 +43,8 @@ private:
     std::string code;
     Token *newToken(const Token t = {0});
     void addToken(Token *t);
-    char peek(unsigned long ofst = 0);
-    char step(unsigned long ofst = 0);
+    char peek(unsigned long ofst = 1);
+    char step(unsigned long ofst = 1);
     void skip();
     Token *scan();
 public:
