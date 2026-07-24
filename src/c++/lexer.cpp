@@ -61,7 +61,40 @@ void Lexer::skip() {
     }
 }
 Token *Lexer::scan(){
-    return this->newToken({0});
+    auto temp = this->newToken({
+        nullptr,
+        TokenType::TK_ERROR,
+        {},
+        nullptr,
+        NULL
+    });
+    switch(this->peek()){
+    case '#':
+        break;
+    case ';':
+        temp->type = TokenType::TK_SEMI;
+        temp->name = ";";
+        break;
+    case '{':
+        temp->type = TokenType::TK_LBRACE;
+        temp->name = "{";
+        break;
+    case '}':
+        temp->type = TokenType::TK_RBRACE;
+        temp->name = "}";
+        break;
+    [[fallthrough]]case '[':
+        if(this->peek(2) == '['){
+            temp->type = TokenType::TK_ATTR;
+            temp->name = "[[";
+        } else {
+            temp->type = TokenType::TK_OP;
+            temp->name = "[";
+        }
+    default:
+        break;
+    }
+    return temp;
 }
 Token *Lexer::tokenize() {
     while(true){
