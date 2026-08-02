@@ -46,6 +46,7 @@ private:
     char peek(unsigned long ofst = 1);
     char step(unsigned long ofst = 1);
     void skip();
+    void genattr(Token *tmp);
     Token *scan();
 public:
     Lexer(const std::string &fileName):file(fileName), pos(0), head(nullptr), tail(nullptr) {}

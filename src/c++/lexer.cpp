@@ -60,11 +60,13 @@ void Lexer::skip() {
         }
     }
 }
+void Lexer::genattr(Token *tmp){
+}
 Token *Lexer::scan(){
     auto temp = this->newToken({
         nullptr,
         TokenType::TK_ERROR,
-        {},
+        "",
         nullptr,
         NULL
     });
@@ -85,12 +87,11 @@ Token *Lexer::scan(){
         break;
     [[fallthrough]]case '[':
         if(this->peek(2) == '['){
-            temp->type = TokenType::TK_ATTR;
-            temp->name = "[[";
         } else {
             temp->type = TokenType::TK_OP;
             temp->name = "[";
         }
+        break;
     default:
         break;
     }
