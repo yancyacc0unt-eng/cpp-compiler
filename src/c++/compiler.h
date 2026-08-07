@@ -47,6 +47,9 @@ private:
     char step(unsigned long ofst = 1);
     void skip();
     void genattr(Token *tmp);
+    void Lexer::genprec(Token *tmp);
+    void Lexer::genkwds(Token *tmp);
+    void Lexer::genopos(Token *tmp);
     Token *scan();
 public:
     Lexer(const std::string &fileName):file(fileName), pos(0), head(nullptr), tail(nullptr) {}
@@ -54,5 +57,6 @@ public:
     Token *tokenize();
     ~Lexer() = default;
 };
-
+//util
+bool isalpha(char c);
 #endif//COMPILER_H

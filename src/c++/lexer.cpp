@@ -62,6 +62,12 @@ void Lexer::skip() {
 }
 void Lexer::genattr(Token *tmp){
 }
+void Lexer::genprec(Token *tmp){
+}
+void Lexer::genkwds(Token *tmp){
+}
+void Lexer::genopos(Token *tmp){
+}
 Token *Lexer::scan(){
     auto temp = this->newToken({
         nullptr,
@@ -72,6 +78,7 @@ Token *Lexer::scan(){
     });
     switch(this->peek()){
     case '#':
+        genprec(temp);
         break;
     case ';':
         temp->type = TokenType::TK_SEMI;
@@ -87,11 +94,11 @@ Token *Lexer::scan(){
         break;
     [[fallthrough]]case '[':
         if(this->peek(2) == '['){
+            genattr(temp);
         } else {
             temp->type = TokenType::TK_OP;
             temp->name = "[";
         }
-        break;
     default:
         break;
     }
