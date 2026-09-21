@@ -1,2 +1,1 @@
-bin/compile.exe
-bin/compile++.exe
+bin/*.exe
